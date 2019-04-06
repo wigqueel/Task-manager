@@ -15,7 +15,7 @@ namespace Laba5.Models
 
    
         public float MemoryUse { get; private set; }
-        public string Modules{ get; private set; }
+        public string Modules{ get;  set; }
         public string MachineName { get; private set; }
         public DateTime StartTime { get; private set; }
         string  now = DateTime.Now.ToString();

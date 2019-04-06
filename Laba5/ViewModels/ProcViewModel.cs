@@ -42,7 +42,13 @@ namespace Laba5.ViewModels
                 selected = value;
 
                 OnPropertyChanged();
+                OnPropertyChanged("ProcessModules");
+                
             }
+        }
+        public ProcessModuleCollection ProcessModules
+        {
+            get { return Selected?.Modules; }
         }
         public ICommand Mod
         {
@@ -50,7 +56,7 @@ namespace Laba5.ViewModels
         }
         public void ShowMod(object obj)
         {
-            MessageBox.Show(Selected.MachineName);
+            
         }
 
         public ProcViewModel(int sortIndex = 1)
@@ -112,10 +118,10 @@ namespace Laba5.ViewModels
                 try
                 {
 
-                    //RamCounter = new PerformanceCounter("Process", "Private Bytes", process.ProcessName);
-                    // CpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
-                    //CpuTaken = Convert.ToInt32(CpuCounter.NextValue() / Environment.ProcessorCount);
-                    //RamTaken = Math.Round(RamCounter.NextValue() / (1024 * 1024), 2);
+                  // var RamCounter = new PerformanceCounter("Process", "Private Bytes", process.ProcessName);
+                   // var CpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
+                    //int CpuTaken = Convert.ToInt32(CpuCounter.NextValue() / Environment.ProcessorCount);
+                   //int RamTaken = Convert.ToInt32(Math.Round(RamCounter.NextValue() / (1024 * 1024), 2));
                     // bool IsResponding = System.Diagnostics.Process.GetProcessesByName(process.ProcessName).Any();
                     //string isworking = IsResponding.ToString();
                     string isworking = "";

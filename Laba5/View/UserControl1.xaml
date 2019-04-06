@@ -7,7 +7,7 @@
 
     <Grid Width="1100">
 
-        <DataGrid x:Name="Grid" Width="1000" ItemsSource="{Binding Procs, Mode=OneWay}" SelectedItem="{Binding Selected}" AutoGenerateColumns="False" VerticalAlignment="Top">
+        <DataGrid x:Name="Grid" Width="1000" ItemsSource="{Binding Procs, Mode=OneWay}"  AutoGenerateColumns="False" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Procces Id" Binding="{Binding ProcessId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Procces Name" Binding="{Binding ProcessName}"></DataGridTextColumn>
@@ -15,11 +15,12 @@
                 <DataGridTextColumn Header = "Procces Load" Binding="{Binding ProcessLoad}"></DataGridTextColumn>
                 <DataGridTextColumn Header = "Memory use" Binding="{Binding MemoryUse}"></DataGridTextColumn>
                 <DataGridTextColumn Header = "Modules" MaxWidth="200"  Binding="{Binding Modules}"></DataGridTextColumn>
-                <DataGridTextColumn Header = "Mashine name" Width="200" Binding="{Binding MachineName}"></DataGridTextColumn>
+                <DataGridTextColumn Header = "Mashine name" Width="60" Binding="{Binding MachineName}"></DataGridTextColumn>
                 <DataGridTextColumn Header = "Start Time" Binding="{Binding StartTime}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="BtnKill"  Click="BtnKill_OnClick" Margin="10,84,1051,296">Kill</Button>
-        <Button x:Name="Modules"  Command="{Binding Mod}" Margin="10,321,1051,72" Content="Mod"/>
+        <Button x:Name="Proc"  Click="Proc_Click" Margin="10,195,1051,185">Proc</Button>
+        <Button x:Name="Modules"  Command="{Binding Mod}" Margin="10,321,1051,72" Content="Mod" Click="Modules_Click"/>
     </Grid>
 </UserControl>

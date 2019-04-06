@@ -54,5 +54,37 @@ namespace Laba5.View
             var proc = Process.GetProcessById(sel.ProcessId);
             proc.Kill();
         }
+
+        private void Modules_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (Proc)Grid.SelectedItem;
+            var proc = Process.GetProcessById(sel.ProcessId);
+            ProcessThreadCollection sel1 = proc.Threads;
+
+            foreach (ProcessThread thread in sel1)
+            {
+                MessageBox.Show(
+                thread.Id.ToString(), thread.StartTime.ToString());
+                MessageBox.Show(
+                thread.PriorityLevel.ToString());
+            }
+            
+        }
+
+        private void Proc_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (Proc)Grid.SelectedItem;
+            var proc = Process.GetProcessById(sel.ProcessId);
+            ProcessModuleCollection sel1 = proc.Modules;
+            
+
+            foreach (ProcessModule module in sel1)
+            {
+                MessageBox.Show(
+                module.ModuleName.ToString(), module.FileName.ToString());
+                
+            }
+            
+        }
     }
 }
