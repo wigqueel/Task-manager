@@ -19,7 +19,7 @@ namespace Laba5.ViewModels
         private ObservableCollection<Proc> _procs;
         private Process selected;
         private ICommand _mod;
-       
+
         public ObservableCollection<Proc> Procs
         {
             get => _procs;
@@ -29,7 +29,7 @@ namespace Laba5.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public PerformanceCounter RamCounter { get; }
         public PerformanceCounter CpuCounter { get; }
         public int CpuTaken { get; }
@@ -52,16 +52,26 @@ namespace Laba5.ViewModels
         {
             MessageBox.Show(Selected.MachineName);
         }
+
         public ProcViewModel(int sortIndex = 1)
+        {
+
+
+            Thread myThread = new Thread(new ParameterizedThreadStart(Load));
+            myThread.Start(sortIndex);
+
+
+        }
+        public void Load(object sortIndex)
         {
             _procs = new ObservableCollection<Proc>();
             var list = Process.GetProcesses();
             var sorted = new List<Process>();
-            switch (sortIndex)
+            switch ((int)sortIndex)
             {
                 case 0:
-              
-                     sorted = list.OrderBy(p => p.Id).ToList();
+
+                    sorted = list.OrderBy(p => p.Id).ToList();
                     break;
                 case 1:
                     sorted = list.OrderBy(p => p.ProcessName).ToList();
@@ -89,18 +99,16 @@ namespace Laba5.ViewModels
 
                     break;
             }
-            
-
             foreach (Process process in sorted)
             {
                 string fullPath = "";
-                
+
                 int i = 0;
                 var procs = _procs.ToList();
                 //var cpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
                 //cpuCounter.NextValue();
 
-                
+
                 try
                 {
 
@@ -108,9 +116,10 @@ namespace Laba5.ViewModels
                     // CpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
                     //CpuTaken = Convert.ToInt32(CpuCounter.NextValue() / Environment.ProcessorCount);
                     //RamTaken = Math.Round(RamCounter.NextValue() / (1024 * 1024), 2);
-                    bool IsResponding = System.Diagnostics.Process.GetProcessesByName(process.ProcessName).Any();
-                    string isworking = IsResponding.ToString();
-                    var proc = Process.GetCurrentProcess(); 
+                    // bool IsResponding = System.Diagnostics.Process.GetProcessesByName(process.ProcessName).Any();
+                    //string isworking = IsResponding.ToString();
+                    string isworking = "";
+                    var proc = Process.GetCurrentProcess();
                     fullPath = process.MainModule.FileName;
                     procs.Add(new Proc(process.ProcessName, process.Id, process.StartTime, process.MachineName, isworking, 3, process.VirtualMemorySize64, fullPath)); // , cpuCounter.NextValue()
                     Procs = new ObservableCollection<Proc>(procs);
@@ -119,12 +128,11 @@ namespace Laba5.ViewModels
                 catch
                     (Exception exp)
                 { }
-                
-                 
+
+
                 // выводим id и имя процесса
             }
-            
-            
+
         }
     }
 }
