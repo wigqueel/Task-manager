@@ -55,36 +55,40 @@ namespace Laba5.View
             proc.Kill();
         }
 
-        private void Modules_Click(object sender, RoutedEventArgs e)
-        {
-            var sel = (Proc)Grid.SelectedItem;
-            var proc = Process.GetProcessById(sel.ProcessId);
-            ProcessThreadCollection sel1 = proc.Threads;
-
-            foreach (ProcessThread thread in sel1)
-            {
-                MessageBox.Show(
-                thread.Id.ToString(), thread.StartTime.ToString());
-                MessageBox.Show(
-                thread.PriorityLevel.ToString());
-            }
-            
-        }
-
         private void Proc_Click(object sender, RoutedEventArgs e)
         {
             var sel = (Proc)Grid.SelectedItem;
             var proc = Process.GetProcessById(sel.ProcessId);
-            ProcessModuleCollection sel1 = proc.Modules;
-            
+            ProcessThreadCollection sel1 = proc.Threads;
+            string text = "";
+            int i = 0;
+            foreach (ProcessThread thread in sel1)
+                {
+                i++;
+                text += i + ". " + thread.Id.ToString() + " " + thread.StartTime.ToString() + " " + thread.PriorityLevel.ToString() + "\r\n" + "\r\n";
+                    
+                }
+            Proc_Block.Text = text;
 
-            foreach (ProcessModule module in sel1)
+
+
+        }
+
+        private void Modules_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (Proc)Grid.SelectedItem;
+            var proc = Process.GetProcessById(sel.ProcessId);
+            ProcessModuleCollection sel2 = proc.Modules;
+
+            string text = "";
+            int i = 0;
+            foreach (ProcessModule module in sel2)
             {
-                MessageBox.Show(
-                module.ModuleName.ToString(), module.FileName.ToString());
-                
+                i++;
+                text += i + ". " + module.ModuleName.ToString() + " " + module.FileName.ToString() + "\r\n" + "\r\n";
+
             }
-            
+            Mod_Block.Text = text;
         }
     }
 }

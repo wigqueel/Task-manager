@@ -5,10 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Birthday="clr-namespace:Laba5.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1100">
+        Title="MainWindow" Height="800" Width="1100">
     <Grid>
-        <Birthday:UserControl1>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Birthday:UserControl1 Margin="5,33,-70,154" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+            <Birthday:UserControl1.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.235"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Birthday:UserControl1.RenderTransform>
+
         </Birthday:UserControl1>
     </Grid>
 </Window>

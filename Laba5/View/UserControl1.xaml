@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" Height="485.88" Width="931.561">
+             mc:Ignorable="d" Height="571.598" Width="1147.522">
 
-    <Grid Width="1100">
+    <Grid Margin="0,0,54,94">
 
         <DataGrid x:Name="Grid" Width="1000" ItemsSource="{Binding Procs, Mode=OneWay}"  AutoGenerateColumns="False" VerticalAlignment="Top">
             <DataGrid.Columns>
@@ -22,5 +22,9 @@
         <Button x:Name="BtnKill"  Click="BtnKill_OnClick" Margin="10,84,1051,296">Kill</Button>
         <Button x:Name="Proc"  Click="Proc_Click" Margin="10,195,1051,185">Proc</Button>
         <Button x:Name="Modules"  Command="{Binding Mod}" Margin="10,321,1051,72" Content="Mod" Click="Modules_Click"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Proc_Block" Margin="128,526,0,-112" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="265"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Mod_Block" Margin="634,526,0,-112" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="265"/>
+        <Label Content="Modules:" HorizontalAlignment="Left" Margin="180,473,0,-21" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Processes:" HorizontalAlignment="Left" Margin="698,481,0,-29" VerticalAlignment="Top" Width="124"/>
     </Grid>
 </UserControl>
