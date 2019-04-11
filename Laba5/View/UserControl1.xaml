@@ -24,7 +24,7 @@
         <Button x:Name="Modules"  Command="{Binding Mod}" Margin="10,321,1051,72" Content="Mod" Click="Modules_Click"/>
         <TextBox HorizontalAlignment="Left" x:Name="Proc_Block" Margin="128,526,0,-112" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="265"/>
         <TextBox HorizontalAlignment="Left" x:Name="Mod_Block" Margin="634,526,0,-112" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="265"/>
-        <Label Content="Modules:" HorizontalAlignment="Left" Margin="180,473,0,-21" VerticalAlignment="Top" Width="124"/>
-        <Label Content="Processes:" HorizontalAlignment="Left" Margin="698,481,0,-29" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Processes:" HorizontalAlignment="Left" Margin="180,473,0,-21" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Modules:" HorizontalAlignment="Left" Margin="698,481,0,-29" VerticalAlignment="Top" Width="124"/>
     </Grid>
 </UserControl>

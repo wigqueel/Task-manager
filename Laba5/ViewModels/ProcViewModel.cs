@@ -62,14 +62,16 @@ namespace Laba5.ViewModels
         public ProcViewModel(int sortIndex = 1)
         {
 
-
-            Thread myThread = new Thread(new ParameterizedThreadStart(Load));
-            myThread.Start(sortIndex);
+            
+                Thread myThread = new Thread(new ParameterizedThreadStart(Load));
+                myThread.Start(sortIndex);
+            
 
 
         }
         public void Load(object sortIndex)
         {
+            
             _procs = new ObservableCollection<Proc>();
             var list = Process.GetProcesses();
             var sorted = new List<Process>();
@@ -136,7 +138,6 @@ namespace Laba5.ViewModels
                 { }
 
 
-                // выводим id и имя процесса
             }
 
         }

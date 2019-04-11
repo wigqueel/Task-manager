@@ -57,6 +57,7 @@ namespace Laba5.Models
             Modules = modules;
             MachineName = machineName;
             StartTime = starttime;
+            
         }
     }
     
